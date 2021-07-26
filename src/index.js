@@ -18,6 +18,7 @@ async function onSearch(e){
   e.preventDefault();
   imageApi.resetPage();
     clearImageContainer();
+    refs.loadMoreButton.classList.add('hidden');
     const form = e.currentTarget;
        imageApi.searchQuery = form.elements.searchQuery.value.trim();
  
@@ -29,7 +30,7 @@ async function onSearch(e){
 
   try {
         const result = await imageApi.fetchImages()
-    
+    console.log(result);
       
         if (result.hits.length === 0) {
             refs.loadMoreButton.classList.add('hidden');
@@ -39,7 +40,7 @@ async function onSearch(e){
       
       if (result.hits.length > 0) {
           appendImageMarkup(result.hits);
-
+        //    refs.loadMoreButton.classList.add('hidden');
           Notiflix.Notify.success(`Hooray! We found ${result.totalHits} images.`);
       }
         

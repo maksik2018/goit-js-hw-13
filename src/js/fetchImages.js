@@ -17,6 +17,7 @@ export default class ImageApiService {
         // console.log(this.page);
         this.page += 1;
         return response.data
+       
     }
 
       resetPage() {
